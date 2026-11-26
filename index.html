@@ -3,31 +3,155 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TortugaAI</title>
-<meta name="description" content="TortugaAI — test page.">
+<title>TortugaAI — Isle of a Thousand Bots</title>
+<meta name="description" content="TortugaAI — a pirate cove of artificial intelligence, yo-ho.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b1020;--fg:#e8ecf8;--acc:#39d98a;--mut:#93a0c4}
+:root{
+  --ink:#0d0a07;
+  --parch:#e9d7a6;
+  --parch2:#d9c084;
+  --wood:#3a2416;
+  --wood2:#5a3a20;
+  --gold:#e8b13c;
+  --red:#9c2b1e;
+  --sea:#123a44;
+  --sea2:#0a2530;
+}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg)}
-main{max-width:760px;margin:0 auto;padding:12vh 24px}
-h1{font-size:2.6rem;margin:0 0 .4rem;letter-spacing:-.02em}
-.tag{color:var(--acc);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
-p{color:var(--mut)}
-.card{margin-top:2rem;padding:1.2rem 1.4rem;border:1px solid #1e2740;border-radius:14px;background:#0e1430}
-a{color:var(--acc)}
-footer{margin-top:3rem;color:#5f6b8a;font-size:.85rem}
+html,body{margin:0}
+body{
+  background:
+    radial-gradient(120% 80% at 50% 0%, #1d3247 0%, #0d1f2b 45%, #07131b 100%);
+  color:var(--parch);
+  font-family:"IM Fell English", Georgia, serif;
+  font-size:18px; line-height:1.7;
+}
+body::before{ /* subtle parchment grain */
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.055; z-index:9999;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='1'/></svg>");
+}
+.frame{
+  max-width:880px; margin:32px auto; padding:0 16px;
+}
+.panel{
+  background:
+    linear-gradient(180deg,#f0e0b4 0%, #e3ce9a 60%, #d8bf85 100%);
+  color:var(--ink);
+  border:6px solid var(--wood);
+  border-radius:6px;
+  box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 0 0 3px #2a1a10, inset 0 0 40px rgba(60,40,20,.45);
+  padding:38px 34px;
+  position:relative;
+}
+.panel::after{
+  content:""; position:absolute; inset:8px; border:2px dashed rgba(58,36,22,.45); border-radius:3px; pointer-events:none;
+}
+.title{
+  font-family:"Pirata One", system-ui, cursive;
+  font-size:clamp(2.4rem,7vw,5rem);
+  line-height:1; margin:.1em 0 .05em; letter-spacing:.02em;
+  color:var(--red);
+  text-shadow:2px 2px 0 #f6ecc9, 4px 5px 0 rgba(0,0,0,.35);
+  text-align:center;
+}
+.sub{
+  font-family:"IBM Plex Mono", monospace; font-size:.8rem; letter-spacing:.42em; text-transform:uppercase;
+  text-align:center; color:var(--wood2); margin:0 0 1.2rem;
+}
+hr.rope{
+  border:0; height:22px; margin:1.3rem 0; background-repeat:repeat-x; background-position:center;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='22'><path d='M0 11 Q 20 1 40 11 T 80 11' fill='none' stroke='%233a2416' stroke-width='3'/></svg>");
+  opacity:.8;
+}
+.art{
+  font-family:"IBM Plex Mono", ui-monospace, monospace;
+  white-space:pre; overflow-x:auto; text-align:center;
+  color:var(--wood); font-size:clamp(.34rem,1.7vw,.62rem); line-height:1.05; margin:1.2rem 0 0;
+  text-shadow:0 1px 0 rgba(255,255,255,.35);
+}
+.lead{font-size:1.12rem; text-align:center; color:#2c1d12; margin:.4rem auto 0; max-width:620px}
+.nav{display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin:1.6rem 0 .2rem}
+.nav a{
+  font-family:"IBM Plex Mono", monospace; font-size:.78rem; letter-spacing:.16em; text-transform:uppercase;
+  text-decoration:none; color:#f0e0b4; background:var(--wood2);
+  border:2px solid #24160d; border-radius:4px; padding:.5rem .9rem;
+  box-shadow:0 3px 0 #1b1009;
+}
+.nav a:hover{background:var(--red); transform:translateY(-1px)}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:1.6rem}
+.card{
+  background:linear-gradient(180deg,#fbf1d2,#eddcac);
+  border:3px solid #2a1a10; border-radius:4px; padding:16px 18px;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.35), 0 4px 0 #cbb079;
+}
+.card h3{font-family:"Pirata One", cursive; font-size:1.7rem; margin:0 0 .2rem; color:var(--sea)}
+.card p{margin:.2rem 0 0; font-size:.95rem; color:#3a2a1a}
+footer{text-align:center; color:#9db4c6; font-family:"IBM Plex Mono", monospace; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; margin:1.6rem 0 2rem}
+a.ink{color:var(--red)}
 </style>
 </head>
 <body>
-<main>
-  <div class="tag">TortugaAI</div>
-  <h1>TortugaAI</h1>
-  <p>Test page served from GitHub Pages.</p>
-  <div class="card">
-    <p>Placeholder landing page. Replace this content with the real TortugaAI site when ready.</p>
-  </div>
-  <footer>&copy; <span id="y"></span> TortugaAI</footer>
-</main>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<div class="frame">
+  <header class="panel">
+    <h1 class="title">Tortuga&nbsp;AI</h1>
+    <p class="sub">Isle of a Thousand Bots · Est. MMXXVI</p>
+
+    <pre class="art" aria-hidden="true">
+    ___       ___       ___       ___
+   /   \_____/   \_____/   \_____/   \
+  |  o  |  o  |  o  |  o  |  o  |  o  |
+   \___/ \___/ \___/ \___/ \___/ \___/
+      \    |     |     |     |    /
+       \___|_____|_____|_____|___/
+        \\  TORTUGA  AI  CO.  //
+         \\_________________//
+           \    |  ⚑  |    /
+            \___|_____|___/
+               |  |  |
+            ~~~~~~~~~~~~~~~
+    </pre>
+
+    <p class="lead">
+      “Yo-ho! Here be machines that think, and a crew that ships.<br>
+      Lend us yer wits — or yer gold — and we’ll chart the deep together.”
+    </p>
+
+    <nav class="nav">
+      <a href="#crew">The Crew</a>
+      <a href="#charts">Charts</a>
+      <a href="#parley">Parley</a>
+    </nav>
+    <hr class="rope">
+  </header>
+
+  <main class="panel" style="margin-top:22px">
+    <div class="cards" id="crew">
+      <div class="card">
+        <h3>The Lookout</h3>
+        <p>He sees far across the data sea, and warns of storms before they break.</p>
+      </div>
+      <div class="card">
+        <h3>The Quartermaster</h3>
+        <p>Counts the coin, splits the loot, and keeps the ledger honest.</p>
+      </div>
+      <div class="card" id="charts">
+        <h3>The Navigator</h3>
+        <p>Reads the charts and sets the course — no reef nor shoal escapes her.</p>
+      </div>
+    </div>
+
+    <p class="lead" id="parley" style="margin-top:1.6rem">
+      A test page, by and by. Replace this cargo with the real TortugaAI treasures when the tide is right.
+    </p>
+    <p style="text-align:center;margin-top:1rem">
+      <a class="ink" href="https://github.com/exe-eris/tortugaai">Logbook (GitHub)</a>
+    </p>
+  </main>
+
+  <footer>☠ A TortugaAI Test Voyage · GitHub Pages ☠</footer>
+</div>
 </body>
 </html>
